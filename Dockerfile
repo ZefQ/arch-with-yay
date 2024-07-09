@@ -12,5 +12,6 @@ FROM archlinux:latest
 COPY --from=0 /home/makepkg_user/yay-bin/yay-bin-*.pkg.* .
 RUN pacman -Syu --noconfirm git &&\
     pacman -U --noconfirm yay-bin-*.pkg.* &&\
-    rm -rf /var/lib/pacman/sync
+    rm -rf /var/lib/pacman/sync &&\
+    echo "alias pacman=yay" >> /etc/profile
 CMD /bin/bash
