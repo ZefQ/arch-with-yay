@@ -10,7 +10,7 @@ RUN cd $HOME &&\
 
 FROM archlinux:latest
 COPY --from=0 /home/makepkg_user/yay-bin/yay-bin-*.pkg.* .
-RUN pacman -Syu --noconfirm git &&\
+RUN pacman -Syu --noconfirm git base-devel &&\
     pacman -U --noconfirm yay-bin-*.pkg.* &&\
     rm -rf /var/lib/pacman/sync &&\
     echo "alias pacman=yay" >> /etc/profile
